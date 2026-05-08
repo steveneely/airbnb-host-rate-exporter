@@ -39,6 +39,12 @@ airbnb-host-nightly-rates-mountain-cabin-2026-05-05-to-2027-05-04.csv
 
 Booked nights may be missing from the CSV because Airbnb does not show a nightly price row for those dates in the host calendar. That is expected.
 
+## Privacy
+
+The extension runs locally in Chrome. It reads visible nightly prices from the Airbnb host calendar page you open and downloads a CSV file to your computer. It does not send your Airbnb calendar data to a server, sell data, track browsing, or include analytics.
+
+See [PRIVACY.md](PRIVACY.md) for the full privacy policy.
+
 ## CSV columns
 
 - `date`: night date in `YYYY-MM-DD` format
