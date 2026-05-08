@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airbnb Host Rate Exporter</title>
+    <link rel="stylesheet" href="src/popup.css">
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Airbnb rates</h1>
+        <p id="pageStatus" class="muted">Checking current tab...</p>
+      </header>
+
+      <section class="controls" aria-label="Scrape settings">
+        <label for="months">Months</label>
+        <input id="months" type="number" min="1" max="24" value="12">
+      </section>
+
+      <button id="scrapeButton" type="button" disabled>Scrape rates</button>
+
+      <section class="status" aria-live="polite">
+        <div id="statusText">Open an Airbnb host multicalendar page.</div>
+        <progress id="progress" aria-label="Scraping progress"></progress>
+      </section>
+
+      <section id="result" class="result" hidden>
+        <strong id="resultTitle"></strong>
+        <span id="resultDetails"></span>
+      </section>
+    </main>
+
+    <script src="src/shared.js"></script>
+    <script src="src/popup.js"></script>
+  </body>
+</html>
