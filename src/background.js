@@ -73,6 +73,7 @@ async function scrapeRates(messenger, request) {
   const tabId = request.tabId;
   const startUrl = request.url;
   const months = Math.max(1, Math.min(Number(request.months) || shared.DEFAULT_MONTHS, 24));
+  const markupPercent = shared.normalizeMarkupPercent(request.markupPercent);
   const startDate = shared.todayIso();
   const years = shared.getYearsForWindow(startDate, months);
   const collected = new Map();
@@ -111,7 +112,7 @@ async function scrapeRates(messenger, request) {
     sourceUrl = sourceUrl || snapshot.url || yearUrl;
 
     for (const row of snapshot.rows) {
-      collected.set(row.date, shared.normalizeScrapedRow(row));
+      collected.set(row.date, shared.normalizeScrapedRow(row, { markupPercent }));
     }
 
     sendProgress(messenger, {
@@ -137,6 +138,7 @@ async function scrapeRates(messenger, request) {
 
   return {
     filename,
+    markupPercent,
     months,
     propertyName,
     rowCount: rows.length,

@@ -8,7 +8,7 @@ Export Airbnb host calendar nightly prices to CSV.
 
 Airbnb Host Rate Exporter helps hosts download visible nightly prices from their Airbnb host calendar into a clean CSV file.
 
-Open the Airbnb host calendar for a single listing, click the extension, and export the next 12 months of visible nightly rates. The CSV opens in Excel, Numbers, Google Sheets, or tools that import rate data.
+Open the Airbnb host calendar for a single listing, click the extension, and export the next 12 months of visible nightly rates. If your Airbnb prices include a host markup or fee adjustment, enter that percentage and the extension will remove it before saving the CSV. The CSV opens in Excel, Numbers, Google Sheets, or tools that import rate data.
 
 The export includes:
 

@@ -4,6 +4,7 @@
   const shared = globalThis.AirbnbRateExporter;
   const pageStatus = document.getElementById("pageStatus");
   const monthsInput = document.getElementById("months");
+  const markupPercentInput = document.getElementById("markupPercent");
   const scrapeButton = document.getElementById("scrapeButton");
   const statusText = document.getElementById("statusText");
   const progress = document.getElementById("progress");
@@ -20,6 +21,7 @@
   function setBusy(isBusy) {
     scrapeButton.disabled = isBusy || !activeTab;
     monthsInput.disabled = isBusy;
+    markupPercentInput.disabled = isBusy;
     if (isBusy) {
       progress.removeAttribute("value");
     } else {
@@ -66,10 +68,17 @@
     }
 
     const months = Math.max(1, Math.min(Number(monthsInput.value) || 12, 24));
+    const markupPercent = shared.normalizeMarkupPercent(markupPercentInput.value);
     monthsInput.value = String(months);
+    markupPercentInput.value = String(markupPercent);
+    localStorage.setItem("markupPercent", String(markupPercent));
     result.hidden = true;
     setBusy(true);
-    setStatus("Starting scrape...");
+    setStatus(
+      markupPercent > 0
+        ? `Starting scrape and removing ${markupPercent}% markup...`
+        : "Starting scrape...",
+    );
 
     const port = chrome.runtime.connect({ name: "scrape-rates" });
     port.onMessage.addListener((message) => {
@@ -98,7 +107,13 @@
       tabId: activeTab.id,
       url: activeTab.url,
       months,
+      markupPercent,
     });
+  }
+
+  const savedMarkupPercent = localStorage.getItem("markupPercent");
+  if (savedMarkupPercent !== null) {
+    markupPercentInput.value = String(shared.normalizeMarkupPercent(savedMarkupPercent));
   }
 
   scrapeButton.addEventListener("click", startScrape);

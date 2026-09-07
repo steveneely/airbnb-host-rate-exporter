@@ -69,6 +69,30 @@ test("normalizeScrapedRow keeps only sync and spreadsheet columns", () => {
   );
 });
 
+test("normalizeScrapedRow can remove a user-defined markup before export", () => {
+  assert.deepEqual(
+    shared.normalizeScrapedRow(
+      {
+        date: "2026-05-04",
+        nightlyRate: 115.5,
+        currencySymbol: "$",
+      },
+      { markupPercent: 15.5 },
+    ),
+    {
+      date: "2026-05-04",
+      day_of_week: "Monday",
+      nightly_rate: "100.00",
+      nightly_rate_cents: 10000,
+      currency_symbol: "$",
+    },
+  );
+});
+
+test("removeMarkupFromRate reverses percentage markup instead of subtracting points", () => {
+  assert.equal(shared.removeMarkupFromRate(577.5, 15.5).toFixed(2), "500.00");
+});
+
 test("cleanPropertyName strips Airbnb edit-page chrome", () => {
   assert.equal(
     shared.cleanPropertyName("Edit calendar for '5 Acres, Hot Tub w/Mountain Views, Sledding Hill!' - Airbnb"),

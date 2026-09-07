@@ -63,6 +63,26 @@
     return [...rows].sort((a, b) => a.date.localeCompare(b.date));
   }
 
+  function normalizeMarkupPercent(value) {
+    const percent = Number(value);
+    if (!Number.isFinite(percent) || percent < 0) {
+      return 0;
+    }
+    return Math.min(percent, 100);
+  }
+
+  function removeMarkupFromRate(rate, markupPercent = 0) {
+    const numericRate = Number(rate);
+    const percent = normalizeMarkupPercent(markupPercent);
+    if (!Number.isFinite(numericRate) || numericRate < 0) {
+      return 0;
+    }
+    if (percent === 0) {
+      return numericRate;
+    }
+    return numericRate / (1 + percent / 100);
+  }
+
   function weekdayFromIsoDate(dateString) {
     const [year, month, day] = dateString.split("-").map(Number);
     const date = new Date(Date.UTC(year, month - 1, day));
@@ -135,8 +155,8 @@
     }
   }
 
-  function normalizeScrapedRow(row) {
-    const nightlyRate = Number(row.nightlyRate);
+  function normalizeScrapedRow(row, options = {}) {
+    const nightlyRate = removeMarkupFromRate(row.nightlyRate, options.markupPercent);
     return {
       date: row.date,
       day_of_week: weekdayFromIsoDate(row.date),
@@ -157,8 +177,10 @@
     filterRowsToWindow,
     getYearsForWindow,
     isLikelyAirbnbHostCalendarUrl,
+    normalizeMarkupPercent,
     normalizeScrapedRow,
     pad2,
+    removeMarkupFromRate,
     rowsToCsv,
     slugifyPropertyName,
     sortByDate,

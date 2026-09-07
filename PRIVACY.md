@@ -11,6 +11,7 @@ When you click **Scrape rates**, the extension reads information visible on the 
 - Calendar dates
 - Visible nightly prices
 - Currency symbol
+- Optional markup percentage that you enter in the popup
 
 The extension uses this information only to create a CSV file that you can download to your computer.
 
