@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Airbnb Host Rate Exporter",
   "description": "Export nightly rates from Airbnb host calendar year view to CSV.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "action": {
     "default_popup": "popup.html",
     "default_title": "Export Airbnb rates",

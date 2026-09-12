@@ -1,17 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
   <title id="title">Airbnb Host Rate Exporter</title>
-  <desc id="desc">A red calendar with a sharp download arrow.</desc>
-  <rect width="128" height="128" rx="28" fill="#ff385c"/>
-  <rect x="20" y="22" width="88" height="84" rx="16" fill="#ffffff"/>
-  <rect x="33" y="33" width="62" height="8" rx="4" fill="#ffd6de"/>
-  <g fill="#ffd6de">
-    <rect x="33" y="58" width="13" height="10" rx="2"/>
-    <rect x="57" y="58" width="13" height="10" rx="2"/>
-    <rect x="81" y="58" width="13" height="10" rx="2"/>
-    <rect x="33" y="77" width="13" height="10" rx="2"/>
-    <rect x="57" y="77" width="13" height="10" rx="2"/>
-    <rect x="81" y="77" width="13" height="10" rx="2"/>
-  </g>
-  <path d="M59 68h10v19h12l-17 17-17-17h12z" fill="#ff385c"/>
-  <rect x="47" y="103" width="34" height="7" rx="1" fill="#ff385c"/>
+  <desc id="desc">A large red arrow pointing down on a white background.</desc>
+  <rect width="128" height="128" fill="#ffffff"/>
+  <path d="M48 12h32v58h34L64 120 14 70h34z" fill="#ff385c"/>
 </svg>
