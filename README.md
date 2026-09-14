@@ -22,13 +22,13 @@ If you update the extension files later, click the reload icon on the extension 
 1. Log in to Airbnb in Chrome.
 2. Open the host calendar for one listing.
 3. Click the **Airbnb Host Rate Exporter** extension icon.
-4. Optionally enter a percentage in **Remove markup %**.
+4. Optionally enter a percentage in **Price increase to remove (%)**.
 5. Click **Scrape rates**.
 6. Choose where to save the CSV when Chrome asks.
 
 By default, the extension exports the next 12 months of visible nightly prices.
 
-If you enter a markup percentage, the extension removes that markup before writing the CSV. For example, if Airbnb shows a nightly rate of `$115.50` and you enter `15.5`, the exported rate is `$100.00`.
+If Airbnb increased your displayed rates, enter that percentage and the extension will convert them back to their pre-increase amounts before writing the CSV. For example, if Airbnb shows a nightly rate of `$115.50` and you enter `15.5`, the exported rate is `$100.00`. Use `0` for no adjustment.
 
 If the button is disabled, make sure you are on an Airbnb host multicalendar page for a single listing. If you just reloaded the extension, reload the Airbnb calendar tab too.
 

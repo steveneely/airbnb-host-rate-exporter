@@ -44,6 +44,17 @@ p {
   justify-content: space-between;
 }
 
+.adjustment {
+  display: grid;
+  gap: 7px;
+}
+
+.help-text {
+  color: #5f6f7a;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
 label {
   color: #334e5c;
   font-weight: 600;

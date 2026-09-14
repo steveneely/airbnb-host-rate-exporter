@@ -76,7 +76,7 @@
     setBusy(true);
     setStatus(
       markupPercent > 0
-        ? `Starting scrape and removing ${markupPercent}% markup...`
+        ? `Starting scrape and removing a ${markupPercent}% price increase...`
         : "Starting scrape...",
     );
 
